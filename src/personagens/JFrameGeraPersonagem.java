@@ -1,3 +1,5 @@
+package personagens;
+
 
 import javax.annotation.Resource;
 
