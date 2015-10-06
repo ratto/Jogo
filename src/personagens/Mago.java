@@ -39,13 +39,21 @@ public class Mago extends Personagem {
     @Override
     public int atacar()
     {
+<<<<<<< HEAD
        return 0; 
+=======
+       return lancaDado(20)+this.getInteligencia(); 
+>>>>>>> desenvolvimento
     }
     
     @Override
     public int defender()
     {
+<<<<<<< HEAD
         return 0;
+=======
+        return this.getDestreza()+lancaDado(20);
+>>>>>>> desenvolvimento
     }
     
 }

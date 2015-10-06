@@ -1,5 +1,3 @@
-package personagens;
-
 /*
  * Copyright (C) 2015 PedroRatto
  *
@@ -17,45 +15,37 @@ package personagens;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+package personagens;
 
 /**
  *
  * @author PedroRatto
  */
-public class Ranger extends Personagem {
-
-    public Ranger(){
+public class Defensor extends Personagem {
+    
+    public Defensor()
+    {
         
     }
     
-<<<<<<< HEAD
-=======
     @Override
->>>>>>> desenvolvimento
     public void geraPersonagem()
     {
         super.geraPersonagem();
-        this.setDestreza(this.getDestreza()+3);
+        this.setForca(this.getForca()+1);
+        this.setArmadura(this.getArmadura()+2);
     }
     
     @Override
     public int atacar()
     {
-<<<<<<< HEAD
-       return 0; 
-=======
-       return lancaDado(20)+this.getDestreza(); 
->>>>>>> desenvolvimento
+       return lancaDado(20)+this.getForca();
     }
     
     @Override
     public int defender()
     {
-<<<<<<< HEAD
-        return 0;
-=======
         return this.getDestreza()+lancaDado(20);
->>>>>>> desenvolvimento
     }
     
 }

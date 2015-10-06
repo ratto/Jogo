@@ -113,4 +113,22 @@ public abstract class Personagem {
     
     public abstract int atacar();
     public abstract int defender();
+<<<<<<< HEAD
+=======
+    
+    public int lancaDado(int faces)
+    {
+        return rd.nextInt(faces)+1;
+    }
+    
+    public int causaDano()
+    {
+        return lancaDado(4);
+    }
+    
+    public void registraDano(int dano)
+    {
+        this.setHp(this.getHp()-dano);
+    }
+>>>>>>> desenvolvimento
 }
