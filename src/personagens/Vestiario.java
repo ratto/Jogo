@@ -1,5 +1,3 @@
-package personagens;
-
 /*
  * Copyright (C) 2015 PedroRatto
  *
@@ -17,34 +15,21 @@ package personagens;
  * along with this program; if not, write to the Free Software
  * Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
  */
+package personagens;
+
+import java.util.ArrayList;
 
 /**
  *
  * @author PedroRatto
  */
-public class Ranger extends Personagem {
-
-    public Ranger(){
-        
-    }
+public class Vestiario {
     
-    @Override
-    public void geraPersonagem()
-    {
-        super.geraPersonagem();
-        this.setDestreza(this.getDestreza()+3);
-    }
+    public static ArrayList <Personagem> combatente = new ArrayList();
     
-    @Override
-    public int atacar()
+    public static int getCombatentes()
     {
-       return lancaDado(20)+this.getDestreza(); 
-    }
-    
-    @Override
-    public int defender()
-    {
-        return this.getDestreza()+lancaDado(20);
+        return combatente.size();
     }
     
 }

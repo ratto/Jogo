@@ -32,20 +32,18 @@ public class Guerreiro extends Personagem {
     {
         super.geraPersonagem();
         this.setForca(this.getForca()+3);
-        this.setHp(this.getHp()+(this.getForca()*2));
-        this.setArmadura(this.getArmadura()+1);
     }
     
     @Override
     public int atacar()
     {
-       return lancaDado(20)+this.getForca(); 
+       return lancaDado(20)+this.getForca();
     }
     
     @Override
     public int defender()
     {
-        return this.getArmadura()+this.getDestreza()+lancaDado(10);
+        return this.getDestreza()+lancaDado(20);
     }
     
 }

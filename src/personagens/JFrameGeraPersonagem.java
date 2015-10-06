@@ -2,6 +2,7 @@ package personagens;
 
 
 import javax.annotation.Resource;
+import javax.swing.JOptionPane;
 
 /*
  * Copyright (C) 2015 PedroRatto
@@ -26,6 +27,19 @@ import javax.annotation.Resource;
  * @author PedroRatto
  */
 public class JFrameGeraPersonagem extends javax.swing.JFrame {
+    
+    Personagem escolhido = new Personagem() {
+
+        @Override
+        public int atacar() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+
+        @Override
+        public int defender() {
+            throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        }
+    };
 
     /**
      * Creates new form JFrameGeraPersonagem
@@ -58,6 +72,12 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
         jBtnGerarPersonagem = new javax.swing.JButton();
         jComboEspecializacao = new javax.swing.JComboBox();
         jBtnLimpar = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jBtnGravar = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabelGravados = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -104,7 +124,7 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
             }
         });
 
-        jComboEspecializacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Guerreiro", "Ranger", "Mago" }));
+        jComboEspecializacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Guerreiro", "Ranger", "Mago", "Defensor" }));
         jComboEspecializacao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboEspecializacaoActionPerformed(evt);
@@ -117,6 +137,25 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
                 jBtnLimparActionPerformed(evt);
             }
         });
+
+        jLabel7.setFont(new java.awt.Font("Verdana", 0, 14)); // NOI18N
+        jLabel7.setText("Gerador de Personagens");
+
+        jBtnGravar.setText("Gravar");
+        jBtnGravar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnGravarActionPerformed(evt);
+            }
+        });
+
+        jButton2.setText("Combate até a morte!");
+
+        jLabel8.setText("Combatentes:");
+
+        jLabel9.setText("/ 10");
+
+        jLabelGravados.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelGravados.setText("0");
 
         jMenu1.setText("File");
 
@@ -147,29 +186,43 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jTextInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTextHp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(42, 42, 42)
-                        .addComponent(jComboEspecializacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(8, 8, 8))
-                    .addComponent(jTextNome)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextForca, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jBtnGerarPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jBtnLimpar, javax.swing.GroupLayout.Alignment.TRAILING))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jTextNome)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextForca, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextHp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jTextDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(28, 28, 28)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jComboEspecializacao, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jBtnGerarPersonagem, javax.swing.GroupLayout.PREFERRED_SIZE, 147, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel8)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabelGravados, javax.swing.GroupLayout.PREFERRED_SIZE, 14, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(jLabel9))
+                                    .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                        .addComponent(jBtnLimpar)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jBtnGravar, javax.swing.GroupLayout.PREFERRED_SIZE, 73, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                    .addComponent(jTextInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(50, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel7)
+                .addGap(95, 95, 95))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jLabel7)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -187,16 +240,21 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
                     .addComponent(jTextForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBtnLimpar))
+                    .addComponent(jBtnLimpar)
+                    .addComponent(jBtnGravar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(jLabel5)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9)
+                    .addComponent(jLabelGravados))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
-                .addContainerGap(23, Short.MAX_VALUE))
+                    .addComponent(jLabel6)
+                    .addComponent(jButton2))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -233,6 +291,7 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
             jTextForca.setText(String.valueOf(guerreiro.getForca()));
             jTextDestreza.setText(String.valueOf(guerreiro.getDestreza()));
             jTextInteligencia.setText(String.valueOf(guerreiro.getInteligencia()));
+            this.escolhido = guerreiro;
         } else if (jComboEspecializacao.getSelectedItem()=="Ranger") {
             Ranger ranger = new Ranger();
             ranger.geraPersonagem();
@@ -242,6 +301,7 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
             jTextForca.setText(String.valueOf(ranger.getForca()));
             jTextDestreza.setText(String.valueOf(ranger.getDestreza()));
             jTextInteligencia.setText(String.valueOf(ranger.getInteligencia()));
+            this.escolhido = ranger;
         } else if (jComboEspecializacao.getSelectedItem()=="Mago") {
             Mago mago = new Mago();
             mago.geraPersonagem();
@@ -251,6 +311,17 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
             jTextForca.setText(String.valueOf(mago.getForca()));
             jTextDestreza.setText(String.valueOf(mago.getDestreza()));
             jTextInteligencia.setText(String.valueOf(mago.getInteligencia()));
+            this.escolhido = mago;
+        } else if (jComboEspecializacao.getSelectedItem()=="Defensor") {
+            Defensor defensor = new Defensor();
+            defensor.geraPersonagem();
+            defensor.setNome(jTextNome.getText());
+            jTextHp.setText(String.valueOf(defensor.getHp()));
+            jTextArmadura.setText(String.valueOf(defensor.getArmadura()));
+            jTextForca.setText(String.valueOf(defensor.getForca()));
+            jTextDestreza.setText(String.valueOf(defensor.getDestreza()));
+            jTextInteligencia.setText(String.valueOf(defensor.getInteligencia()));
+            this.escolhido = defensor;
         }
     }//GEN-LAST:event_jBtnGerarPersonagemActionPerformed
 
@@ -266,6 +337,22 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
         jTextDestreza.setText(null);
         jTextInteligencia.setText(null);
     }//GEN-LAST:event_jBtnLimparActionPerformed
+
+    private void jBtnGravarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGravarActionPerformed
+        // TODO add your handling code here:
+        if (jTextNome.getText() == null){
+            JOptionPane.showMessageDialog(null, "Nomeie o seu campeão!");
+        } else {
+            Vestiario.combatente.add(this.escolhido);
+            jLabelGravados.setText(String.valueOf(Vestiario.getCombatentes()));
+            jTextNome.setText(null);
+            jTextHp.setText(null);
+            jTextArmadura.setText(null);
+            jTextForca.setText(null);
+            jTextDestreza.setText(null);
+            jTextInteligencia.setText(null);
+        }
+    }//GEN-LAST:event_jBtnGravarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,7 +391,9 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBtnGerarPersonagem;
+    private javax.swing.JButton jBtnGravar;
     private javax.swing.JButton jBtnLimpar;
+    private javax.swing.JButton jButton2;
     private javax.swing.JComboBox jComboEspecializacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -312,6 +401,10 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel jLabelGravados;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
