@@ -38,13 +38,13 @@ public class Guerreiro extends Personagem {
     @Override
     public int atacar()
     {
-       return 0; 
+       return lancaDado(20)+this.getForca(); 
     }
     
     @Override
     public int defender()
     {
-        return 0;
+        return this.getArmadura()+this.getDestreza()+lancaDado(10);
     }
     
 }
