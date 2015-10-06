@@ -49,7 +49,15 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        jTextNome = new javax.swing.JTextField();
+        jTextHp = new javax.swing.JTextField();
+        jTextArmadura = new javax.swing.JTextField();
+        jTextForca = new javax.swing.JTextField();
+        jTextDestreza = new javax.swing.JTextField();
+        jTextInteligencia = new javax.swing.JTextField();
+        jBtnGerarPersonagem = new javax.swing.JButton();
+        jComboEspecializacao = new javax.swing.JComboBox();
+        jBtnLimpar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
@@ -68,9 +76,45 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
 
         jLabel6.setText("Inteligencia:");
 
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+        jTextNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
+                jTextNomeActionPerformed(evt);
+            }
+        });
+
+        jTextHp.setEditable(false);
+        jTextHp.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextHpActionPerformed(evt);
+            }
+        });
+
+        jTextArmadura.setEditable(false);
+
+        jTextForca.setEditable(false);
+
+        jTextDestreza.setEditable(false);
+
+        jTextInteligencia.setEditable(false);
+
+        jBtnGerarPersonagem.setText("Gerar Personagem");
+        jBtnGerarPersonagem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnGerarPersonagemActionPerformed(evt);
+            }
+        });
+
+        jComboEspecializacao.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Guerreiro", "Ranger", "Mago" }));
+        jComboEspecializacao.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboEspecializacaoActionPerformed(evt);
+            }
+        });
+
+        jBtnLimpar.setText("Limpar");
+        jBtnLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBtnLimparActionPerformed(evt);
             }
         });
 
@@ -94,37 +138,65 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel5)
+                    .addComponent(jLabel6)
                     .addComponent(jLabel4)
                     .addComponent(jLabel3)
                     .addComponent(jLabel2)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jTextInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTextDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(49, 49, 49)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(112, Short.MAX_VALUE))
+                        .addComponent(jTextHp, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(42, 42, 42)
+                        .addComponent(jComboEspecializacao, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(8, 8, 8))
+                    .addComponent(jTextNome)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextForca, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 32, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jBtnGerarPersonagem, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jBtnLimpar, javax.swing.GroupLayout.Alignment.TRAILING))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel2)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel2)
+                    .addComponent(jTextHp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboEspecializacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addComponent(jTextArmadura, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnGerarPersonagem))
+                .addGap(3, 3, 3)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel4)
+                    .addComponent(jTextForca, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jBtnLimpar))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel4)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextDestreza, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel5)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel6)
-                .addContainerGap(121, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextInteligencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addContainerGap(23, Short.MAX_VALUE))
         );
 
         pack();
@@ -135,9 +207,65 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
         System.exit(0);
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+    private void jTextNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextNomeActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
+    }//GEN-LAST:event_jTextNomeActionPerformed
+
+    private void jTextHpActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextHpActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextHpActionPerformed
+
+    private void jBtnGerarPersonagemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnGerarPersonagemActionPerformed
+        // TODO add your handling code here:
+        
+        jTextHp.setText(null);
+        jTextArmadura.setText(null);
+        jTextForca.setText(null);
+        jTextDestreza.setText(null);
+        jTextInteligencia.setText(null);
+        
+        if(jComboEspecializacao.getSelectedItem()=="Guerreiro") {
+            Guerreiro guerreiro = new Guerreiro();
+            guerreiro.geraPersonagem();
+            guerreiro.setNome(jTextNome.getText());
+            jTextHp.setText(String.valueOf(guerreiro.getHp()));
+            jTextArmadura.setText(String.valueOf(guerreiro.getArmadura()));
+            jTextForca.setText(String.valueOf(guerreiro.getForca()));
+            jTextDestreza.setText(String.valueOf(guerreiro.getDestreza()));
+            jTextInteligencia.setText(String.valueOf(guerreiro.getInteligencia()));
+        } else if (jComboEspecializacao.getSelectedItem()=="Ranger") {
+            Ranger ranger = new Ranger();
+            ranger.geraPersonagem();
+            ranger.setNome(jTextNome.getText());
+            jTextHp.setText(String.valueOf(ranger.getHp()));
+            jTextArmadura.setText(String.valueOf(ranger.getArmadura()));
+            jTextForca.setText(String.valueOf(ranger.getForca()));
+            jTextDestreza.setText(String.valueOf(ranger.getDestreza()));
+            jTextInteligencia.setText(String.valueOf(ranger.getInteligencia()));
+        } else if (jComboEspecializacao.getSelectedItem()=="Mago") {
+            Mago mago = new Mago();
+            mago.geraPersonagem();
+            mago.setNome(jTextNome.getText());
+            jTextHp.setText(String.valueOf(mago.getHp()));
+            jTextArmadura.setText(String.valueOf(mago.getArmadura()));
+            jTextForca.setText(String.valueOf(mago.getForca()));
+            jTextDestreza.setText(String.valueOf(mago.getDestreza()));
+            jTextInteligencia.setText(String.valueOf(mago.getInteligencia()));
+        }
+    }//GEN-LAST:event_jBtnGerarPersonagemActionPerformed
+
+    private void jComboEspecializacaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboEspecializacaoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboEspecializacaoActionPerformed
+
+    private void jBtnLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBtnLimparActionPerformed
+        // TODO add your handling code here:
+        jTextHp.setText(null);
+        jTextArmadura.setText(null);
+        jTextForca.setText(null);
+        jTextDestreza.setText(null);
+        jTextInteligencia.setText(null);
+    }//GEN-LAST:event_jBtnLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -175,6 +303,9 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jBtnGerarPersonagem;
+    private javax.swing.JButton jBtnLimpar;
+    private javax.swing.JComboBox jComboEspecializacao;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -184,6 +315,11 @@ public class JFrameGeraPersonagem extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextArmadura;
+    private javax.swing.JTextField jTextDestreza;
+    private javax.swing.JTextField jTextForca;
+    private javax.swing.JTextField jTextHp;
+    private javax.swing.JTextField jTextInteligencia;
+    private javax.swing.JTextField jTextNome;
     // End of variables declaration//GEN-END:variables
 }
